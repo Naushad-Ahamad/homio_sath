@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "905835412961",
+    "project_id": "hica-a66f7",
+    "storage_bucket": "hica-a66f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905835412961:android:d89e099399c39fab0f66a0",
+        "android_client_info": {
+          "package_name": "com.hica_user.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905835412961-7j930cus1hp1gs35amgnutvbq36fibfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hica_user.app",
+            "certificate_hash": "d34dae64f18f62e9b2aa9dc22ccbf248e5b9eaff"
+          }
+        },
+        {
+          "client_id": "905835412961-l9eo87urbnri9c38ls2h4irtju6tp619.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhNTsL41nKjcmneugSJ6ogujDAvUfdKEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905835412961-diqkc7s7s1hbejofvirjdaldstbotoba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
