@@ -57,13 +57,28 @@ class _AddVitalFormState extends State<AddVitalForm> {
     return Stack(
       children: [
         Scaffold(
+          bottomNavigationBar: BottomAppBar(
+            elevation: 0,
+            child: Container(
+              margin: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 5.0),
+              child: RoundButton(
+                  title: 'Save Vital',
+                  color: 0xFF39053B,
+                  textColor: 0xFFFFFFFF,
+                  onPress: () async {
+                    Navigator.pop(context);
+                  }),
+            ),
+          ),
           resizeToAvoidBottomInset: false,
           appBar: AddstockAppbar.appBar(
               340, MyTheme.white, context, 'Add Vital', true),
-          body: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
-              margin: EdgeInsets.all(12.0),
-              child: buildFormColumn(context)),
+          body: SingleChildScrollView(
+            child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                margin: EdgeInsets.all(12.0),
+                child: buildFormColumn(context)),
+          ),
         ),
         ChangeNotifierProvider<StockListViewModel>.value(
             value: viewModel,
@@ -117,7 +132,7 @@ class _AddVitalFormState extends State<AddVitalForm> {
                   controller: firstnameController,
                   //This will obscure text dynamically
                   decoration: const InputDecoration(
-                    hintText: 'Sugar',
+                    hintText: 'Pulse',
                     /* icon: ImageIcon(
                       AssetImage('assets/images/wwweb.png'),
                       size: 20,
@@ -157,7 +172,7 @@ class _AddVitalFormState extends State<AddVitalForm> {
                   controller: lastnameController,
                   //This will obscure text dynamically
                   decoration: const InputDecoration(
-                    hintText: 'Temperature',
+                    hintText: 'Blood Presure',
                     /* icon: ImageIcon(
                       AssetImage('assets/images/wwweb.png'),
                       size: 20,
@@ -198,7 +213,7 @@ class _AddVitalFormState extends State<AddVitalForm> {
                   controller: uuidController,
                   //This will obscure text dynamically
                   decoration: const InputDecoration(
-                    hintText: 'Blood Presure',
+                    hintText: 'SPO2',
                     hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
@@ -209,16 +224,206 @@ class _AddVitalFormState extends State<AddVitalForm> {
                 ),
               )),
         ),
-        Container(
-          margin: EdgeInsets.fromLTRB(15.0, 70.0, 15.0, 5.0),
-          child: RoundButton(
-              title: 'Save Vital',
-              color: 0xFF39053B,
-              textColor: 0xFFFFFFFF,
-              onPress: () async {
-                Navigator.pop(context);
-              }),
-        )
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: MyTheme.white, width: 1),
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Color(0xFFF5F3F3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: firstnameController,
+                  //This will obscure text dynamically
+                  decoration: const InputDecoration(
+                    hintText: 'Temperature',
+                    /* icon: ImageIcon(
+                      AssetImage('assets/images/wwweb.png'),
+                      size: 20,
+                      color: Color(0xFFB88231),
+                    ),*/
+                    hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: MyTheme.white, width: 1),
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Color(0xFFF5F3F3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: firstnameController,
+                  //This will obscure text dynamically
+                  decoration: const InputDecoration(
+                    hintText: 'Respiratory Rate',
+                    /* icon: ImageIcon(
+                      AssetImage('assets/images/wwweb.png'),
+                      size: 20,
+                      color: Color(0xFFB88231),
+                    ),*/
+                    hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: MyTheme.white, width: 1),
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Color(0xFFF5F3F3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: firstnameController,
+                  //This will obscure text dynamically
+                  decoration: const InputDecoration(
+                    hintText: 'Height',
+                    /* icon: ImageIcon(
+                      AssetImage('assets/images/wwweb.png'),
+                      size: 20,
+                      color: Color(0xFFB88231),
+                    ),*/
+                    hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: MyTheme.white, width: 1),
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Color(0xFFF5F3F3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: firstnameController,
+                  //This will obscure text dynamically
+                  decoration: const InputDecoration(
+                    hintText: 'Weight',
+                    /* icon: ImageIcon(
+                      AssetImage('assets/images/wwweb.png'),
+                      size: 20,
+                      color: Color(0xFFB88231),
+                    ),*/
+                    hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              )),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: MyTheme.white, width: 1),
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Color(0xFFF5F3F3),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: firstnameController,
+                  //This will obscure text dynamically
+                  decoration: const InputDecoration(
+                    hintText: 'Age',
+                    /* icon: ImageIcon(
+                      AssetImage('assets/images/wwweb.png'),
+                      size: 20,
+                      color: Color(0xFFB88231),
+                    ),*/
+                    hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                  ),
+                ),
+              )),
+        ),
       ],
     );
   }

@@ -160,6 +160,80 @@ class _StiockListScreenState extends State<StiockListScreen> {
                               ),
                             ],
                           ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              children: [
+                                Theme(
+                                  data: Theme.of(context).copyWith(
+                                    cardColor: Colors.transparent,
+                                    //   canvasColor:Colors.transparent,
+                                  ),
+                                  child: PopupMenuButton<int>(
+                                    constraints: const BoxConstraints.expand(
+                                        width: 80, height: 260),
+                                    onSelected: (item) =>
+                                        handleClick(item, context as int),
+                                    offset: Offset(30, 30),
+                                    elevation: 0,
+                                    itemBuilder: (context) => [
+                                      const PopupMenuItem<int>(
+                                          value: 0,
+                                          child: Card(
+                                              color: Color(0xFF39053B),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Row(
+                                                  children: [
+                                                    Icon(Icons.menu_outlined,
+                                                        color: Colors.white),
+                                                  ],
+                                                ),
+                                              ))),
+                                      const PopupMenuItem<int>(
+                                          value: 1,
+                                          child: Card(
+                                              color: Color(0xFF39053B),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Icon(Icons.edit_outlined,
+                                                    color: Colors.white),
+                                              ))),
+                                      const PopupMenuItem<int>(
+                                          value: 2,
+                                          child: Card(
+                                              color: Color(0xFF39053B),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Icon(
+                                                    Icons.delete_outline,
+                                                    color: Colors.white),
+                                              ))),
+                                      const PopupMenuItem<int>(
+                                          value: 3,
+                                          child: Card(
+                                              color: Color(0xFF39053B),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Icon(Icons.add_outlined,
+                                                    color: Colors.white),
+                                              ))),
+                                      const PopupMenuItem<int>(
+                                          value: 4,
+                                          child: Card(
+                                              color: Color(0xFF39053B),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Icon(
+                                                  Icons.add_box,
+                                                  color: Colors.white,
+                                                ),
+                                              ))),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )),
                         ],
                       ),
                     ),
