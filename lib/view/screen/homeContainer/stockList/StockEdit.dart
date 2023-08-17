@@ -24,17 +24,14 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'AddStockFrom.dart';
-import 'AddStockFrom.dart';
-
-class AddStockForm extends StatefulWidget {
-  const AddStockForm({Key? key}) : super(key: key);
+class EditStockForm extends StatefulWidget {
+  const EditStockForm({Key? key}) : super(key: key);
 
   @override
-  State<AddStockForm> createState() => _AddStockFormState();
+  State<EditStockForm> createState() => _EditStockFormState();
 }
 
-class _AddStockFormState extends State<AddStockForm> {
+class _EditStockFormState extends State<EditStockForm> {
   var isLoading = false;
   String userid = '',
       password = '',
@@ -69,7 +66,6 @@ class _AddStockFormState extends State<AddStockForm> {
   }
 
   String selectedValue = 'Liquid Preparation';
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -458,7 +454,7 @@ class _AddStockFormState extends State<AddStockForm> {
         Container(
           margin: EdgeInsets.fromLTRB(15.0, 70.0, 15.0, 5.0),
           child: RoundButton(
-              title: 'Add Stock',
+              title: 'Edit Stock',
               color: 0xFF39053B,
               textColor: 0xFFFFFFFF,
               onPress: () async {}),

@@ -4,22 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hica_app/data/network/appConfig.dart';
-import 'package:hica_app/model/favorite/StockResponse.dart';
+import 'package:hica_app/model/favorite/PatientResponse.dart';
 import 'package:hica_app/res/style/colors.dart';
 import 'package:hica_app/utils/routes/routes_name.dart';
-import 'package:hica_app/view/screen/homeContainer/stockList/SearchPatient.dart';
-import 'package:hica_app/viewodel/StockListViewModel.dart';
+import 'package:hica_app/utils/utils.dart';
+import 'package:hica_app/view/screen/homeContainer/patientList/AddVitalForm.dart';
+import 'package:hica_app/view/screen/homeContainer/patientList/SearchMadicineBox.dart';
+import 'package:hica_app/viewodel/PatientListViewModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class StiockListScreen extends StatefulWidget {
-  const StiockListScreen({Key? key}) : super(key: key);
+import 'StockEdit.dart';
+
+class StocktListScreen extends StatefulWidget {
+  const StocktListScreen({Key? key}) : super(key: key);
 
   @override
-  State<StiockListScreen> createState() => _StiockListScreenState();
+  State<StocktListScreen> createState() => _StocktListScreenState();
 }
 
-class _StiockListScreenState extends State<StiockListScreen> {
+class _StocktListScreenState extends State<StocktListScreen> {
   var isLoading = true;
 
   @override
@@ -47,120 +51,163 @@ class _StiockListScreenState extends State<StiockListScreen> {
                   padding: const EdgeInsets.all(10.0),
                   color: Color(appColors.colorBackground),
                   child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
+                    child: Stack(
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
                             child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    "Medicine Name : ",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.0175,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
+                                Column(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: Text(
+                                                  "Patient Name : ",
+                                                  style: GoogleFonts.montserrat(
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.0175,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0),
+                                                child: Text(
+                                                  "Gender : ",
+                                                  style: GoogleFonts.montserrat(
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.0175,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 0.0),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "Adhar No : ",
+                                                      style: GoogleFonts.montserrat(
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.0175,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black),
+                                                    ),
+                                                    Text(
+                                                      "Email : ",
+                                                      style: GoogleFonts.montserrat(
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.0175,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black),
+                                                    ),
+                                                    Text(
+                                                      "Uuid : ",
+                                                      style: GoogleFonts.montserrat(
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.0175,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+/*
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment
+                                          .spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                          const EdgeInsets
+                                              .fromLTRB(
+                                              10.0,
+                                              10.0,
+                                              20.0,
+                                              1.0),
+                                          child: Text(
+                                            "Email : "+listdata[index].email.toString(),
+                                            style: GoogleFonts
+                                                .montserrat(
+                                              fontSize: MediaQuery.of(
+                                                  context)
+                                                  .size
+                                                  .height *
+                                                  0.0175,
+                                              color: Colors
+                                                  .black,
+                                              fontWeight:
+                                              FontWeight
+                                                  .w600,
+                                            ),
+                                          ),
+                                        ),
+
+                                      ],
+                                    ),*/
+                                      ],
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    "Quantity : ",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.0175,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Available Quantity : ",
-                                        style: GoogleFonts.montserrat(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.0175,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black),
-                                      ),
-                                      Text(
-                                        "Selling Quantity : ",
-                                        style: GoogleFonts.montserrat(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.0175,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    10.0, 10.0, 30.0, 1.0),
-                                child: Text(
-                                  "Price : ",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.0175,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 18.0),
-                                  child: Text(
-                                    " Expairy Date : ",
-                                    style: GoogleFonts.montserrat(
-                                      fontSize:
-                                          MediaQuery.of(context).size.height *
-                                              0.0175,
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Align(
+                        ),
+                        Align(
                             alignment: Alignment.centerRight,
                             child: Column(
                               children: [
@@ -173,7 +220,7 @@ class _StiockListScreenState extends State<StiockListScreen> {
                                     constraints: const BoxConstraints.expand(
                                         width: 80, height: 260),
                                     onSelected: (item) =>
-                                        handleClick(item, context as int),
+                                        handleClick(item, context),
                                     offset: Offset(30, 30),
                                     elevation: 0,
                                     itemBuilder: (context) => [
@@ -234,125 +281,119 @@ class _StiockListScreenState extends State<StiockListScreen> {
                                 ),
                               ],
                             )),
-                        ],
-                      ),
+                      ],
                     ),
                   ),
                 ),
               );
             },
-            itemCount: 1,
+            itemCount: 4,
           ),
-/*  }
+          /*}
 },
 ),
 )*/
         ));
   }
-}
 
-Future<void> handleClick(int item, int index) async {
-  switch (item) {
-    /*  case 0:
-        break;*/
-    case 0:
-      //  Navigator.pushNamed(context, RoutesName.PersonaldetailsForm);
-      break;
-    case 1:
-      break;
-    /* default:
+  Future<void> handleClick(int item, BuildContext context) async {
+    switch (item) {
+      case 0:
+        Utils.successMessage("Comming Soon", context);
+        /*Navigator.pushNamed(context, RoutesName.PersonaldetailsForm);*/
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const EditStockForm()),
+        );
+
+        break;
+      case 2:
+        Utils.successMessage("Comming Soon", context);
+        break;
+      case 3:
+        Utils.successMessage("Comming Soon", context);
+
+        break;
+      case 4:
+        Utils.successMessage("Comming Soon", context);
+
+        break;
+      /* default:
         Navigator.pushNamed(context, RoutesName.addNewCourseForm);*/
+    }
   }
-}
 
-AppBar buildAdAppBar(double statusBarHeight, BuildContext context) {
-  return AppBar(
-    elevation: 3.0,
-    titleSpacing: 0,
-    backgroundColor: Colors.white,
-    leadingWidth: 200,
-    leading: Align(
-      alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 22.0),
-        child: Text(
-          "Stock List",
-          style: GoogleFonts.montserrat(
-              fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
+  AppBar buildAdAppBar(double statusBarHeight, BuildContext context) {
+    return AppBar(
+      elevation: 3.0,
+      titleSpacing: 0,
+      backgroundColor: Colors.white,
+      leadingWidth: 200,
+      leading: Align(
+        alignment: Alignment.centerLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 22.0),
+          child: Text(
+            "Stock List",
+            style: GoogleFonts.montserrat(
+                fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
+          ),
         ),
       ),
-    ),
-    bottom: PreferredSize(
-      preferredSize: const Size.fromHeight(20),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-          margin: EdgeInsets.fromLTRB(15, 0, 0, 10),
-          padding: EdgeInsets.fromLTRB(15, 5, 0, 10),
-          decoration: BoxDecoration(
-              color: Color(0xFF39053B),
-              borderRadius: BorderRadius.circular(5.0)),
-          height: 35,
-          width: 150,
-          child: Align(
-            alignment: Alignment.center,
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, RoutesName.addstockform);
-              },
-              child: Row(
-                children: [
-                  Icon(Icons.add, size: 20, color: Colors.white),
-                  Text("Add Stocks",
-                      style: GoogleFonts.notoSans(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14)),
-                ],
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(20),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            margin: EdgeInsets.fromLTRB(15, 0, 0, 10),
+            padding: EdgeInsets.fromLTRB(15, 5, 0, 10),
+            decoration: BoxDecoration(
+                color: Color(0xFF39053B),
+                borderRadius: BorderRadius.circular(5.0)),
+            height: 35,
+            width: 150,
+            child: Align(
+              alignment: Alignment.center,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.addstockform);
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.add, size: 20, color: Colors.white),
+                    Text("Add Stock",
+                        style: GoogleFonts.notoSans(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14)),
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ),
-    ),
-    /*PreferredSize(
-      preferredSize: const Size.fromHeight(20),
-      child:  Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: Padding(
-            padding: const EdgeInsets.all( 10.0),
-            child: RoundHeaderButton(
-              title:   "+Add Stocks",
-              color: 0xFF39053B,
-              textColor: 0xFFFFFFFF,
-              onPress: () {
-                 Navigator.pushNamed(
-                      context, RoutesName.addstockform);
-              },
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SearchMadicineBox()),
+              );
+            },
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
+              size: 25,
             ),
           ),
-        ),
-      ),
-    ),*/
-    actions: [
-      Padding(
-        padding: const EdgeInsets.only(right: 20.0),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SearchPatient()),
-            );
-          },
-          child: Icon(
-            Icons.search,
-            color: Colors.black,
-            size: 25,
-          ),
-        ),
-      )
-    ],
-  );
+        )
+      ],
+    );
+  }
 }

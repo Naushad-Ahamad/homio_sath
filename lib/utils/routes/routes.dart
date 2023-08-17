@@ -14,7 +14,6 @@ import 'package:hica_app/view/screen/user/loginScreen.dart';
 import '../../view/screen/homeContainer/homeContainer.dart';
 import '../../view/screen/splashScreen.dart';
 
-
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -30,19 +29,18 @@ class Routes {
       case RoutesName.loginScreen:
         return MaterialPageRoute(
             builder: (BuildContext context) => LoginScreen());
-        case RoutesName.addstockform:
+      case RoutesName.addstockform:
         return MaterialPageRoute(
             builder: (BuildContext context) => AddStockForm());
-        case RoutesName.addPatientScreen:
+      case RoutesName.addPatientScreen:
         return MaterialPageRoute(
             builder: (BuildContext context) => AddPatientForm());
-        case RoutesName.patientList:
+      case RoutesName.patientList:
         return MaterialPageRoute(
             builder: (BuildContext context) => PatientListScreen());
-        case RoutesName.addBills:
+      case RoutesName.addBills:
         return MaterialPageRoute(
             builder: (BuildContext context) => AddBillingForm());
-
 
       case RoutesName.aboutusScreen:
         return MaterialPageRoute(
@@ -52,8 +50,8 @@ class Routes {
             builder: (BuildContext context) => SymptomListScreen());
       case RoutesName.StiockListScreen:
         return MaterialPageRoute(
-            builder: (BuildContext context) => StiockListScreen());
-          case RoutesName.BillingListScreen:
+            builder: (BuildContext context) => StocktListScreen());
+      case RoutesName.BillingListScreen:
         return MaterialPageRoute(
             builder: (BuildContext context) => BillingList());
       default:
